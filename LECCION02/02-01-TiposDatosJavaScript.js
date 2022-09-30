@@ -91,7 +91,7 @@ x = 2 + 4 + nombre;
 console.log(x);
 
 
-/*Variable let y const*/
+/*let y const*/
 //Variables que les puedes cambiar el valor
 let nombre1;
 nombre1 = "Juan";
@@ -116,13 +116,15 @@ console.log(z1);
 /*Reglas para definir nombres*/
 let nombreCompleto5 = "Juan Perez";
 let nombrecompleto = "Carlos Lara";
+
 console.log(nombreCompleto5);
 console.log(nombrecompleto);
 
 let a1nombreCompleto;
 let _nombreCompleto;
 let $nombreCompleto;
-//let 1nombreCompleto; no está permitido iniciar el nombre de una variable con un numero
+
+//let 1nombreCompleto;
 
 let _break = 10;
 let ruptura = 10;
