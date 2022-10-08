@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Manejo DOM CSS cambio</title>
+</head>
+<body onload="entrar()">
+    <h1 id= 'titulo'>Manejo DOM con JavaScript</h1>
+    <br/>
+    <div id='mostrar'></div>
+
+    <script>
+       function entrar(){
+        alert('entrando a la pagina');
+        let texto = '';
+        if(navigator.cookieEnabled){
+            texto = 'cokies habilitadas'
+        }else{
+            texto = 'Cookies estan inhabilitadas';
+        }
+        document.getElementById('mostrar').innerHTML =texto ;
+
+       }
+    </script>
+</body>
+</html>
