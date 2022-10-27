@@ -1,39 +1,39 @@
-import { Component, OnInit } from '@angular/core';
-import { Egreso } from '../egreso/egreso.model';
-import { EgresoServicio } from '../egreso/egreso.servicio';
-import { Ingreso } from '../ingreso/ingreso.model';
-import { IngresoServicio } from '../ingreso/ingreso.servicio';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
+import { LogginService } from '../LogginService.service';
+import { Persona } from '../persona.model';
+import { PersonasService } from '../personas.service';
 
 @Component({
   selector: 'app-formulario',
   templateUrl: './formulario.component.html',
-  styleUrls: ['./formulario.component.css']
+  styleUrls: ['./formulario.component.css'],
+
 })
 export class FormularioComponent implements OnInit {
 
-  tipo:string="ingresoOperacion";
-  descripcionInput:string;
-  valorInput:number;
+  //@Output() personaCreada = new EventEmitter<Persona>();
+  nombreInput:string="";
+  apellidoInput:string="";
+ // @ViewChild("nombreInput") nombreInput:ElementRef;
+  //@ViewChild("apellidoInput") apellidoInput:ElementRef;
 
-  constructor(private ingresoServicio: IngresoServicio,
-              private egresoServicio: EgresoServicio) { }
-
-  ngOnInit(): void {
+  constructor(private LogginService:LogginService, private personasService:PersonasService){
+    this.personasService.saludar.subscribe(
+      (indice:number)=>alert("El indice es: "+ indice)
+    );
   }
 
-  tipoOperacion(evento){
-    this.tipo = evento.target.value;
-  }
+  ngOnInit(){
 
-  agregarValor(){
-    if(this.tipo === "ingresoOperacion"){
-      this.ingresoServicio.ingresos.push(new Ingreso(this.descripcionInput, this.valorInput));
-    }
-    else{
-      this.egresoServicio.egresos.push(new Egreso(this.descripcionInput, this.valorInput));
-    }
   }
 
 
+  agregarPersona(){
+    let persona1 = new Persona(this.nombreInput,this.apellidoInput);
+   // this.personas.push(persona1);
+   //this.LogginService.enviaMensajeAConsola("Enviamos persona:"+ persona1.nombre + "Apellido:"+persona1.apellido);
+   //this.personaCreada.emit(persona1);
+   this.personasService.agregarPersona(persona1);
+  }
 
 }
